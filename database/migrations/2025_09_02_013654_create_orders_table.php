@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            //Transaction Time
-            $table->timestamp('transaction_time');
 
             //transaction number
             $table->string('transaction_number')->unique();
 
             //User_ID (foreign key)
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('cashier_id')->nullable();
+            $table->foreign('cashier_id')
                     ->references('id')
                      ->on('users')
                     ->onDelete('set null');

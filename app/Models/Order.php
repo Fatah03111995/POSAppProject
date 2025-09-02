@@ -8,12 +8,23 @@ class Order extends Model
 {
     //
     protected $fillable =[
-        'transaction_time',
         'transaction_number',
-        'user_id',
+        'cashier_id',
         'total_price',
         'total_items',
         'payment_method',
 
     ];
+
+    //Relationship with User (Cashier)
+    public function cashier ()
+    {
+        return $this->belongsTo(User::class, 'cashier_id');
+    }
+    //belongsTo(Model yang menjadi relasi, foreign key di model ini)
+    //belongsTo menyatakan bahwa setiap order dimiliki oleh salah satu user (Cashier)
+    //fungsi cashier() akan mengembalikan instance model User
+    //dapat digunakan untuk mengakses detail cashier
+    //cashier()->name atau cashier()->email
+
 }
