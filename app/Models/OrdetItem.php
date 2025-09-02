@@ -24,7 +24,7 @@ class OrdetItem extends Model
     //dapat digunakan untuk mengakses detail order
     //order()->name
 
-    //Ralation with Product
+    //Relation with Product
     public function product ()
     {
         return $this->belongsTo(Product::class, 'ProductId');
@@ -33,4 +33,10 @@ class OrdetItem extends Model
     //fungsi product() akan mengembalikan instance model Product
     //dapat digunakan untuk mengakses detail product
     //product()->name atau product()->price
+
+    //Kalkulasi subtotal
+    public function subtotal()
+    {
+        return $this->Quantity * $this->Price;
+    }
 }
