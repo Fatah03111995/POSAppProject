@@ -32,7 +32,8 @@ class CreateUser extends CreateRecord
                 ->label('Cancel')
                 ->color('secondary')
                 ->size('lg')
-                ->url($this->getResource()::getUrl('index')),
+                ->url($this->getResource()::getUrl('index'))
+                ->outlined()
         ];
     }
 }
