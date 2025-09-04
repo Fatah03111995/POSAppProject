@@ -16,7 +16,7 @@ class Product extends Model
     ];
 
     //getting name category
-    public function categoty(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 }
