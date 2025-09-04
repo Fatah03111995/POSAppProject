@@ -13,6 +13,7 @@ class OrderController extends Controller
             [
                 'cashier_id' => 'required',
                 'items'=> 'required|array',
+                //user akan mengirimkan data berupa array yang berisi beberapa order item yang dipesan
                 'items.*.product_id' => 'required|exists:products,id',
                 //* wild card -> jika items.0 artinya hanya index 0
                 //. untuk nested data
@@ -42,11 +43,12 @@ class OrderController extends Controller
                 );
 
             foreach($orderData['items'] as $item){
+                $product = \App\Models\Product::find($item['product_id']);
                 $order->orderItems()->create(
                     [
                         'product_id' => $item['product_id'],
                         'quantity' => $item['quantity'],
-                        'total_price' => \App\Models\Product::find($item['product_id'])->price,
+                        'total_price' => $product->price * $item['quantity'],
                     ]
                 );
             }
