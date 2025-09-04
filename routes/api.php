@@ -24,3 +24,5 @@ Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']
 
 //LIST CATEGORY
 Route::get('/categories', [\App\Models\Category::class, 'index'])->middleware('auth:sanctum');
+
+
