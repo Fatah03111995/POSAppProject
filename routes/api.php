@@ -22,7 +22,10 @@ Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']
 //     return $controller->login(request());
 // });
 
+//LOGOUT
+Route::post('/logout',[App\Http\Controllers\api\AuthController::class, 'logout'])->middleware('auth:sanctum');
+
 //LIST CATEGORY
-Route::get('/categories', [\App\Models\Category::class, 'index'])->middleware('auth:sanctum');
+Route::get('/categories', [\App\Http\Controllers\api\CategoryController::class, 'index'])->middleware('auth:sanctum');
 
 
