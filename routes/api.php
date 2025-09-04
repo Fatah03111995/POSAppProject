@@ -7,6 +7,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+//LOGIN
 Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']);
 //post adalah methode statis dari class Route
 //parameter pertama adalah endpoint
@@ -20,3 +21,6 @@ Route::post('/login', [\App\Http\Controllers\api\AuthController::class, 'login']
 //     $controller = new \App\Http\Controllers\api\AuthController();
 //     return $controller->login(request());
 // });
+
+//LIST CATEGORY
+Route::get('/categories', [\App\Models\Category::class, 'index'])->middleware('auth:sanctum');
