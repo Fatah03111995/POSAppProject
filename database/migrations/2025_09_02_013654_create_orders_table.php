@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('transaction_number')->unique();
 
             //User_ID (foreign key)
-            $table->unsignedBigInteger('cashier_id')->nullable();
+            $table->unsignedBigInteger('cashier_id');
             $table->foreign('cashier_id')
                     ->references('id')
                      ->on('users')
-                    ->onDelete('set null');
+                    ->onDelete('cascade');
                     //onDelete('cascade') means if user is deleted, all their orders are deleted
                     //onDelete('set null') means if user is deleted, user_id in orders is set to null
 

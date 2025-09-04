@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ordet_items', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
 
             //Order ID (Foreign Key)
-            $table->unsignedBigInteger('OrderId');
-            $table->foreign('OrderId')->references('id')->on('orders')->onDelete('cascade');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
             //Product ID (Foreign Key)
-            $table->unsignedBigInteger('ProductId');
-            $table->foreign('ProductId')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
             // Quantitiy
             $table->integer('Quantity');
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ordet_items');
+        Schema::dropIfExists('order_items');
     }
 };

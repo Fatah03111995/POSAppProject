@@ -16,6 +16,11 @@ class Order extends Model
 
     ];
 
+    public function orderItems()
+    {
+        return $this->hasMany(\App\Models\OrderItem::class);
+    }
+
     //Relationship with User (Cashier)
     public function cashier ()
     {

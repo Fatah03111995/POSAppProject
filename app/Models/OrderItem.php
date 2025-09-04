@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OrdetItem extends Model
+class OrderItem extends Model
 {
     protected $fillable = [
-        'OrderId',
+        'order_id',
         'ProductId',
         'Quantity',
         'Price',
@@ -16,7 +16,7 @@ class OrdetItem extends Model
     //Relation with Order
     public function order ()
     {
-        return $this->belongsTo(Order::class, 'OrderId');
+        return $this->belongsTo(Order::class, 'order_id');
     }
     //belongsTo(Model yang menjadi relasi, foreign key di model ini)
     //belongsTo menyatakan bahwa setiap order item dimiliki oleh salah satu order
@@ -27,7 +27,7 @@ class OrdetItem extends Model
     //Relation with Product
     public function product ()
     {
-        return $this->belongsTo(Product::class, 'ProductId');
+        return $this->belongsTo(Product::class, 'product_id');
     }
     //belongsTo(Model yang menjadi relasi, foreign key di model ini)
     //fungsi product() akan mengembalikan instance model Product
