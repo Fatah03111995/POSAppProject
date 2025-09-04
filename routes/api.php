@@ -30,3 +30,6 @@ Route::get('/categories', [\App\Http\Controllers\api\CategoryController::class, 
 
 //LIST PRODUCT
 Route::get('/products', [\App\Http\Controllers\api\ProductController::class,'index'])->middleware('auth:sanctum');
+
+//ORDER
+Route::post('/orders', [\App\Http\Controllers\api\OrderController::class,'store'])->middleware('auth:sanctum');

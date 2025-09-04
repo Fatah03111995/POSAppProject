@@ -8,9 +8,9 @@ class OrderItem extends Model
 {
     protected $fillable = [
         'order_id',
-        'ProductId',
-        'Quantity',
-        'Price',
+        'product_id',
+        'quantity',
+        'total_price',
     ];
 
     //Relation with Order

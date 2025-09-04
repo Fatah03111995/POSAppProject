@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-        //'transaction_number',
-        // 'cashier_id',
-        // 'total_price',
-        // 'total_items',
-        // 'payment_method',
     public function store(Request $request)
     {
         $orderData = $request->validate(
@@ -24,7 +19,7 @@ class OrderController extends Controller
                 //items.*.product_id -> product_id pada setiap item
                 //required, harus ada
                 //exists:products,id -> harus ada di tabel producks, kolom id
-                'items.*.quantity' => 'required|integer',
+                'items.*.quantity' => 'required|integer|min:1',
             ]
             );
 
@@ -51,7 +46,7 @@ class OrderController extends Controller
                     [
                         'product_id' => $item['product_id'],
                         'quantity' => $item['quantity'],
-                        'price' => \App\Models\Product::find($item['product_id'])->price,
+                        'total_price' => \App\Models\Product::find($item['product_id'])->price,
                     ]
                 );
             }
@@ -59,7 +54,8 @@ class OrderController extends Controller
 
             return response()->json([
                 'message'=>'Order created successfully',
-                'data' => $order->load('items','cashier')
+                'data'=>$order->load('orderItems.product')
+                // 'data' => $order->load('items','cashier')
             ],201);
     }
 }

@@ -23,10 +23,10 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
             // Quantitiy
-            $table->integer('Quantity');
+            $table->integer('quantity')->default(1);
 
             //Price
-            $table->decimal('Price', 8, 2);
+            $table->decimal('total_price', 10, 2);
 
 
             $table->timestamps();
