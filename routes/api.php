@@ -28,4 +28,5 @@ Route::post('/logout',[App\Http\Controllers\api\AuthController::class, 'logout']
 //LIST CATEGORY
 Route::get('/categories', [\App\Http\Controllers\api\CategoryController::class, 'index'])->middleware('auth:sanctum');
 
-
+//LIST PRODUCT
+Route::get('/products', [\App\Http\Controllers\api\ProductController::class,'index'])->middleware('auth:sanctum');
